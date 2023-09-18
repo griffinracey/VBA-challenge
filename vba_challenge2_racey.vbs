@@ -22,7 +22,7 @@ For Each ws In Worksheets
     Dim close_price As Double
     Dim price_change As Double
     Dim percent_change As Double
-    Dim ticker_total As Double    
+    Dim ticker_total As Double
     
     ' Set column headers
     ws.Cells(1, 9).Value = "Ticker"
@@ -61,7 +61,9 @@ For Each ws In Worksheets
             
             close_price = ws.Cells(i, 6).Value
             ws.Cells(ticker_row, 10).Value = close_price - open_price
-            ws.Range("A" & lastRow).NumberFormat = "0.00"
+            
+            ' set to 2 decimal places
+            ws.Cells(ticker_row, 10).NumberFormat = "0.00"
 
             ' find percent change, check for open price - 0
             If open_price <> 0 Then
@@ -75,7 +77,8 @@ For Each ws In Worksheets
             ws.Cells(ticker_row, 11).Value = percent_change
             
             ' set to percentage
-            ws.Range("K" & lastRow).NumberFormat = "0.00%"
+            ws.Cells(ticker_row, 11).NumberFormat = "0.00%"
+
             
             ' conditional formatting - green for positive, red for negative
             If percent_change > 0 Then
@@ -127,7 +130,7 @@ For Each ws In Worksheets
         If ws.Cells(i, 11).Value > max_inc Then
             max_inc = ws.Cells(i, 11).Value
 
-        ' Print greatest increase ticker and value    
+        ' Print greatest increase ticker and value
         ws.Cells(2, 16).Value = ws.Cells(i, 9).Value
         ws.Cells(2, 17).Value = max_inc
         ws.Range("Q2").NumberFormat = "0.00%"
@@ -142,7 +145,7 @@ For Each ws In Worksheets
         If ws.Cells(i, 11).Value < max_dec Then
             max_dec = ws.Cells(i, 11).Value
 
-        ' Print greatest decrease ticker and value    
+        ' Print greatest decrease ticker and value
         ws.Cells(3, 16).Value = ws.Cells(i, 9).Value
         ws.Cells(3, 17).Value = max_dec
         ws.Range("Q3").NumberFormat = "0.00%"
@@ -157,7 +160,7 @@ For Each ws In Worksheets
         If ws.Cells(i, 12).Value > max_vol Then
             max_vol = ws.Cells(i, 12).Value
 
-        ' Print greatest ticker volume and value    
+        ' Print greatest ticker volume and value
         ws.Cells(4, 16).Value = ws.Cells(i, 9).Value
         ws.Cells(4, 17).Value = max_vol
      
