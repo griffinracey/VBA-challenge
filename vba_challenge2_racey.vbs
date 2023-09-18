@@ -75,7 +75,7 @@ For Each ws In Worksheets
             ws.Cells(ticker_row, 11).Value = percent_change
             
             ' set to percentage
-            ws.Range("K2:K" & lastRow).NumberFormat = "0.00%"
+            ws.Range("K" & lastRow).NumberFormat = "0.00%"
             
             ' conditional formatting - green for positive, red for negative
             If percent_change > 0 Then
