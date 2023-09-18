@@ -57,13 +57,22 @@ For Each ws In Worksheets
             ' print ticker symbol in list
             ws.Cells(ticker_row, 9).Value = ticker_symbol
             
-            ' find yearly change in stock price & set to 2 decimals
-            
+            ' find yearly change in stock price
             close_price = ws.Cells(i, 6).Value
-            ws.Cells(ticker_row, 10).Value = close_price - open_price
+            price_change = close_price - open_price
+            ws.Cells(ticker_row, 10).Value = price_change
             
             ' set to 2 decimal places
             ws.Cells(ticker_row, 10).NumberFormat = "0.00"
+            
+            ' conditional formatting - green for positive, red for negative
+            If price_change > 0 Then
+                ws.Cells(ticker_row, 10).Interior.ColorIndex = 4
+            ElseIf price_change < 0 Then
+                ws.Cells(ticker_row, 10).Interior.ColorIndex = 3
+            Else
+                ws.Cells(ticker_row, 10).Interior.ColorIndex = 2
+            End If
 
             ' find percent change, check for open price - 0
             If open_price <> 0 Then
@@ -78,16 +87,6 @@ For Each ws In Worksheets
             
             ' set to percentage
             ws.Cells(ticker_row, 11).NumberFormat = "0.00%"
-
-            
-            ' conditional formatting - green for positive, red for negative
-            If percent_change > 0 Then
-                ws.Cells(ticker_row, 11).Interior.ColorIndex = 4
-            ElseIf percent_change < 0 Then
-                ws.Cells(ticker_row, 11).Interior.ColorIndex = 3
-            Else
-                ws.Cells(ticker_row, 11).Interior.ColorIndex = 2
-            End If
             
             ' set ticker volume total
             ticker_total = ticker_total + ws.Cells(i, 7).Value
@@ -175,3 +174,4 @@ For Each ws In Worksheets
 Next
 
 End Sub
+
