@@ -7,4 +7,4 @@ Looping through worksheets: https://support.microsoft.com/en-gb/topic/macro-to-l
 
 Autofitting columns: https://learn.microsoft.com/en-us/office/vba/api/excel.range.autofit
 
-Borrowed some ideas from the in-class activity 06-Stu_CreditCardChecker-CellComparison
+Borrowed some general structure from the in-class activity "06-Stu_CreditCardChecker-CellComparison" for finding where the ticker symbol changes to a different symbol and to record the values
