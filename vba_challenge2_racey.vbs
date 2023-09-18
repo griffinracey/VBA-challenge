@@ -61,7 +61,7 @@ For Each ws In Worksheets
             
             close_price = ws.Cells(i, 6).Value
             ws.Cells(ticker_row, 10).Value = close_price - open_price
-            ws.Range("A2:A" & lastRow).NumberFormat = "0.00"
+            ws.Range("A" & lastRow).NumberFormat = "0.00"
 
             ' find percent change, check for open price - 0
             If open_price <> 0 Then
