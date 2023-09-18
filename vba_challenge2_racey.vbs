@@ -22,8 +22,7 @@ For Each ws In Worksheets
     Dim close_price As Double
     Dim price_change As Double
     Dim percent_change As Double
-    Dim ticker_total As Double
-    
+    Dim ticker_total As Double    
     
     ' Set column headers
     ws.Cells(1, 9).Value = "Ticker"
@@ -48,8 +47,6 @@ For Each ws In Worksheets
     
     ' Loop through all of the stocks
     For i = 2 To lastRow
-    
-    
     
         ' Check to see if the row is within the same ticker symbol or we have a new one
         If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
@@ -169,7 +166,6 @@ For Each ws In Worksheets
             max_vol = max_vol
         
         End If
-
 
     Next i
 
